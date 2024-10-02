@@ -12,8 +12,10 @@
   const data3 = document.getElementById('nota3')
   const btnCalculate = document.getElementById('btn-calculate')
   const response = document.getElementById('resultado')
+  const btnPredict = document.getElementById('predecir')
   
   btnCalculate.addEventListener('click', calculateNote )
+  btnPredict.addEventListener('click', predict)
 
   function calculateNote(event) {
 
@@ -25,12 +27,23 @@
     
     let result = ((note1 * 0.3) + (note2 * 0.3) + (note3 * 0.4)).toFixed(2)
     // template string o template literal
-    response.style.color = 'green'
-    response.textContent = `SR/SRA/SRE ${username.value} su nota definitiva es: ${result}`    
+    if(result< 3.5){
+        response.style.color = 'black'
+        response.textContent = `SR/SRA/SRE ${username.value} su nota definitiva es: ${result}, perdio la materia`    
+
+    }else if(result >= 3.5 && result <= 4.5){
+        response.style.color = 'orange'
+        response.textContent = `SR/SRA/SRE ${username.value} su nota definitiva es: ${result}, gano la materia`
+    }else if(result > 4.5){
+        response.style.color = 'green'
+        response.textContent = `SR/SRA/SRE ${username.value} su nota definitiva es: ${result}, felicidades es sobresaliente`
+    }
   }
 
-  
-
-
-
-
+  function predict(){
+    let nota1 = Number(data1.value)
+    let nota2 = Number(data1.value)
+    let result = ((nota1 * 0.3)+ (nota2 * 0.3)).toFixed(2)
+    console.log(result);
+    
+  }
