@@ -41,9 +41,9 @@
   }
 
   function predict(){
+    const nota3 = 3.5;
     let nota1 = Number(data1.value)
     let nota2 = Number(data1.value)
-    let result = ((nota1 * 0.3)+ (nota2 * 0.3)).toFixed(2)
-    console.log(result);
-    
+    let total = ((nota3 - (0.3 * nota1 + 0.3 * nota2)) / 0.4).toFixed(2) 
+    data3.value = total;
   }
